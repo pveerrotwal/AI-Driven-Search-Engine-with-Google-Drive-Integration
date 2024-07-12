@@ -32,7 +32,7 @@ class QueryRequest(BaseModel):
     query: str
 
 folder_id = None
-client = MistralClient(api_key="m0tg3w8o5sAOvLKcW80Pcvks1p4JBXaw")
+client = MistralClient(api_key="_")
 
 # Global variables to cache documents and vector store
 cached_documents = []
@@ -57,7 +57,7 @@ async def set_folder(folder_id_input: str = Form(...)):
     folder_id = folder_id_input
 
     SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
-    SERVICE_ACCOUNT_FILE = '/Users/paramvirrotwal/Desktop/Local Search with RAG/drive-with-rag-bf7e8c4b530b.json'  # Update this path
+    SERVICE_ACCOUNT_FILE = 'Path/to/service/account/json/file'  # Update this path
 
     credentials = service_account.Credentials.from_service_account_file(
         SERVICE_ACCOUNT_FILE, scopes=SCOPES)
@@ -105,9 +105,9 @@ async def set_folder(folder_id_input: str = Form(...)):
     text_splitter = RecursiveCharacterTextSplitter()
     split_documents = text_splitter.split_documents(documents)
 
-    os.environ["HF_TOKEN"] = "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" 
+    os.environ["HF_TOKEN"] = "your_huggingface_token" 
 
-    mistral_api_key = "m0tg3w8o5sAOvLKcW80Pcvks1p4JBXaw"
+    mistral_api_key = "_"
     embeddings = MistralAIEmbeddings(model="mistral-embed", api_key=mistral_api_key)
 
     if not split_documents:
@@ -144,7 +144,7 @@ async def query_drive(query_request: QueryRequest):
 
     retriever = cached_vector_store.as_retriever()
 
-    mistral_api_key = "m0tg3w8o5sAOvLKcW80Pcvks1p4JBXaw"
+    mistral_api_key = "_"
     model = ChatMistralAI(api_key=mistral_api_key)
 
     prompt = ChatPromptTemplate.from_template("""Answer the following question based only on the provided context:
