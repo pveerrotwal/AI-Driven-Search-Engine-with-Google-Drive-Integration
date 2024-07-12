@@ -35,20 +35,17 @@ First, ensure you have Python installed. Then, install the required libraries:
 ## Mistral AI Setup:
 1. Register at Mistral AI and obtain an API key.
    
-## Project Structure:
-Organize your project directory as follows:
-  project/
-│
-├── app.py
-├── index.html
-└── service_account_file.json
-
 ## Running the Application:
 
 Run the FastAPI application using Uvicorn:
-uvicorn main:app --host 0.0.0.0 --port 80
+
+``uvicorn main:app --host 0.0.0.0 --port 80``
+
 This command will start the FastAPI server, and you can access the application at
-`http://127.0.0.1:8000`. 8. Using the Application:
+`http://127.0.0.1:8000`. 
+
+## Using the Application:
+
 1. Open your browser and go to `http://127.0.0.1:8000`.
 2. Set the Google Drive folder ID using the form.
 3. Submit queries through the query form.
